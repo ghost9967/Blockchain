@@ -15,7 +15,7 @@ class BlockChain:
     def insert(self,s):
         self.prevh = s
         conn = sqlite3.connect('votes.db')
-        conn.execute("INSERT INTO votes VALUES (?)",(self.hashi,))
+        conn.execute("INSERT INTO votes VALUES (?,?)",(self.hashi,self.prevh,))
         conn.commit()
         conn.close()
         print("Inserted")
